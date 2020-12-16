@@ -1,0 +1,11 @@
+{
+  "name": "crackingthecodinginterviewproblems",
+  "version": "1.0.0",
+  "description": "These are the solutions to every problem I solved in the cracking the coding interview book. Written in JS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alan Bond",
+  "license": "MIT"
+}
