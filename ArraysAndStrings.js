@@ -99,27 +99,58 @@ const isPalinPerm = (textValue) => {
  * @returns {boolean} True if there is one or fewer character differences between the two strings. False if more than one
  **/
 const oneAway = (origin, target) => {
-  if(Math.abs(origin.length-target.length) > 1) {
+  if (Math.abs(origin.length - target.length) > 1) {
     return false;
   }
   const originObject = catalogCharacterInstances(origin);
   const targetObject = catalogCharacterInstances(target);
   let mismatchCount = 0;
-  for(let key of origin) {
-    if(originObject[key]!== targetObject[key]) {
+  for (let key of origin) {
+    if (originObject[key] !== targetObject[key]) {
       mismatchCount++;
     }
-    if( mismatchCount > 1 ){
+    if (mismatchCount > 1) {
       return false;
     }
   }
-  for(let key of target) {
-    if(originObject[key]!== targetObject[key]) {
+  for (let key of target) {
+    if (originObject[key] !== targetObject[key]) {
       mismatchCount++;
     }
-    if( mismatchCount > 1 ){
+    if (mismatchCount > 1) {
       return false;
     }
   }
   return true;
+}
+
+const stringCompression = (someText) => {
+  if (someText.length > 2) {
+    let currentCharacter = someText[0];
+    const compressedTextArray = [currentCharacter];
+    let instancesOfTheCurrentCharacter = 1;
+    let counter = 1;
+    for (let i = 1; i < someText.length; i++) {
+      if (someText[i] === currentCharacter) {
+        instancesOfTheCurrentCharacter++;
+        if (i === someText.length - 1) {
+          compressedTextArray.push(instancesOfTheCurrentCharacter);
+        }
+      } else {
+        compressedTextArray.push(instancesOfTheCurrentCharacter);
+        currentCharacter = someText[i];
+        instancesOfTheCurrentCharacter = 1;
+        if (i === someText.length - 1) {
+          compressedTextArray.push(currentCharacter);
+          compressedTextArray.push(instancesOfTheCurrentCharacter);
+        }
+      }
+    }
+    if (someText.length <= compressedTextArray.length) {
+      return someText;
+    } else {
+      return compressedTextArray.join('')
+    }
+  }
+  return someText
 }

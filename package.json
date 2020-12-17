@@ -1,5 +1,5 @@
 {
-  "name": "crackingthecodinginterviewproblems",
+  "name": "ctiproblems",
   "version": "1.0.0",
   "description": "These are the solutions to every problem I solved in the cracking the coding interview book. Written in JS",
   "main": "app.js",
@@ -7,5 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alan Bond",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbondDev/CTCIProblems.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AbondDev/CTCIProblems/issues"
+  },
+  "homepage": "https://github.com/AbondDev/CTCIProblems#readme",
+  "keywords": [],
+  "dependencies": {
+    "mocha": "^8.2.1"
+  }
 }
