@@ -4,7 +4,7 @@
   "description": "These are the solutions to every problem I solved in the cracking the coding interview book. Written in JS",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Alan Bond",
   "license": "MIT",
@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/AbondDev/CTCIProblems#readme",
   "keywords": [],
-  "dependencies": {
+  "dependencies": {},
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "devDependencies": {
     "mocha": "^8.2.1"
   }
 }
