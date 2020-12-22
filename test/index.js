@@ -66,3 +66,102 @@ describe('urlify function', function() {
   });
 
 });
+
+describe('catalogCharacterInstances function', function() {
+  it('records the instances of every character in a string', function() {
+    let result = arrayAndStringMethods.catalogCharacterInstances("aafdacscbbc");
+    assert.deepEqual(result, {a:3,b:2,c:3,d:1,f:1,s:1});
+  });
+  it('fails on numbers', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.catalogCharacterInstances(0);
+    });
+  });
+
+  it('fails on booleans', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.catalogCharacterInstances(true);
+    });
+  });
+
+  it('fails on objects', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.catalogCharacterInstances({});
+    });
+  });
+
+});
+
+describe('isPermutation function', function() {
+  it('will return true if two string are a permutation of one another', function() {
+    let result = arrayAndStringMethods.isPermutation("mom","omm");
+    assert.equal(result, true);
+  });
+  it('will return false if two strings are not a permutation of one another', function() {
+    let result = arrayAndStringMethods.isPermutation("mom","dad");
+    assert.equal(result, "");
+  });
+
+  it('fails on numbers', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.isPermutation(0);
+    });
+  });
+
+  it('fails on booleans', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.isPermutation(true);
+    });
+  });
+
+  it('fails on objects', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.isPermutation({});
+    });
+  });
+});
+
+describe('oneAway function', function() {
+  it('returns false if the origin has two or more characters more than the target', function() {
+    let result = arrayAndStringMethods.oneAway("test123","test1");
+    assert.equal(result, false);
+  });
+
+  it('returns false if the target has one or more characters more than the origin', function() {
+    let result = arrayAndStringMethods.oneAway("test1","test123");
+    assert.equal(result, false);
+  });
+
+  it('returns true if the origin and target have one or fewer character differences', function() {
+    let result = arrayAndStringMethods.oneAway("alan","alana");
+    assert.equal(result, true);
+  });
+
+  it('returns true if the origin and target have one or fewer character differences regardless of order', function() {
+    let result = arrayAndStringMethods.oneAway("alan","nala");
+    assert.equal(result, true);
+  });
+
+  it('returns false if the target has different set of characters ', function() {
+    let result = arrayAndStringMethods.oneAway("alan","malak");
+    assert.equal(result, false);
+  });
+
+  it('fails on numbers', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.oneAway(0);
+    });
+  });
+
+  it('fails on booleans', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.oneAway(true);
+    });
+  });
+
+  it('fails on objects', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.oneAway({});
+    });
+  });
+});

@@ -36,6 +36,7 @@ const ArrayAndStringMethods = {
    * @returns {Object} An object that has the characters of the stringValue as keys and the count of the instances of those characters as values.
    **/
   catalogCharacterInstances(stringValue) {
+    if(typeof stringValue !== "string") throw new TypeError(`This function only accepts strings as parameters. Your type is ${typeof stringValue}`);
     let catalog = {}
     for (let characterInstance of stringValue) {
       if (catalog[characterInstance]) {
@@ -50,26 +51,32 @@ const ArrayAndStringMethods = {
    * @function isPermutation
    * @param {string} origin
    * @param {string} target
-   * @returns {boolean} An object that has the characters of the stringValue as keys and the count of the instances of those characters as values.
+   * @returns {boolean} True if the target is a permutation of the of the origin. False otherwise.
    **/
   isPermutation(origin, target) {
-    const cataloggedOrigin = catalogCharacterInstances(origin)
-    const cataloggedTarget = catalogCharacterInstances(target)
+    if(typeof origin !== "string" || typeof target !== "string") throw new TypeError(`This function only accepts strings as parameters. Your types are {origin: ${typeof origin}, target: ${typeof target}}`);
+    const cataloggedOrigin = this.catalogCharacterInstances(origin)
+    const cataloggedTarget = this.catalogCharacterInstances(target)
     for (let key of origin) {
       if (cataloggedOrigin[key] !== cataloggedTarget[key]) {
+        return false
+      }
+    }
+    for (let key of target) {
+      if (cataloggedTarget[key] !== cataloggedOrigin[key]) {
         return false
       }
     }
     return true;
   },
   /**
-   * @function catalogCharacterInstances
+   * @function isPalinPerm
    * @param {string} stringValue The string whose character instances we want catalogged
    * @returns {Object} An object that has the characters of the stringValue as keys and the count of the instances of those characters as values.
    **/
   isPalinPerm(textValue) {
     let trimmedTextValue = textValue.replace(/\s+/g, '');
-    let objTextValue = catalogCharacterInstances(trimmedTextValue);
+    let objTextValue = this.catalogCharacterInstances(trimmedTextValue);
     let oddInstances = 0;
 
     for (let key of trimmedTextValue) {
@@ -96,13 +103,14 @@ const ArrayAndStringMethods = {
    * @returns {boolean} True if there is one or fewer character differences between the two strings. False if more than one
    **/
   oneAway(origin, target) {
+    if(typeof origin !== "string" || typeof target !== "string") throw new TypeError(`This function only accepts strings as parameters. Your types are {origin: ${typeof origin}, target: ${typeof target}}`);
     if (Math.abs(origin.length - target.length) > 1) {
       return false;
     }
-    const originObject = catalogCharacterInstances(origin);
-    const targetObject = catalogCharacterInstances(target);
+    const originObject = this.catalogCharacterInstances(origin);
+    const targetObject = this.catalogCharacterInstances(target);
     let mismatchCount = 0;
-    for (let key of origin) {
+    for (let key of Object.keys(originObject)) {
       if (originObject[key] !== targetObject[key]) {
         mismatchCount++;
       }
@@ -110,8 +118,8 @@ const ArrayAndStringMethods = {
         return false;
       }
     }
-    for (let key of target) {
-      if (originObject[key] !== targetObject[key]) {
+    for (let key of Object.keys(targetObject)) {
+      if(!(originObject.hasOwnProperty(key))){
         mismatchCount++;
       }
       if (mismatchCount > 1) {
@@ -121,6 +129,11 @@ const ArrayAndStringMethods = {
     return true;
   },
 
+  /**
+   * @function stringCompression
+   * @param {string} sometext
+   * @returns {string} A compressed version of the string. where the sequential instance count of a letter appears before the letter. However, If the original string is shorter, then it will just return that
+   **/
   stringCompression(someText) {
     if (someText.length > 2) {
       let currentCharacter = someText[0];
