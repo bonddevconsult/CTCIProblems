@@ -163,6 +163,33 @@ const ArrayAndStringMethods = {
       }
     }
     return someText
+  },
+  /**
+  *@function rotateMatirx
+  *@param {Array} origin Where origin is an array of of arrays representing an NXN Matrix
+  *@returns {Array} A new array that is the same as the original but rotated 90 degrees
+  **/
+  rotateMatrix(origin){
+    if(!origin) throw new Error('Invalid parameters. Origin is empty')
+    if(origin[0].length < 1) throw new Error('Invalid Parameters. There are no columns in the first row of the origin matrix')
+    for(let row of origin) {
+      if(row.length !== origin.length) {
+        throw new Error('Invalid Parameters. This function only accepts NXN arrays')
+      }
+    }
+    if(origin.length === 1 && origin[0].length === 1) return origin
+    const newMatrix = [];
+    let newRow = [];
+    let column = 0;
+    while(column < origin.length) {
+      newRow = [];
+      for(let row of origin) {
+        newRow.unshift(row[column]);
+      }
+      newMatrix[column] = newRow;
+      column++;
+    }
+    return newMatrix
   }
 }
 module.exports = ArrayAndStringMethods

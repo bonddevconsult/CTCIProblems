@@ -165,3 +165,49 @@ describe('oneAway function', function() {
     });
   });
 });
+describe('rotateMatrix function', function() {
+  it('returns a matrix rotated 90 degrees for an nXn matrix', function() {
+    const test = [['A','B','C'],
+                  ['D','E','F'],
+                  ['G','H','I']];
+    const expectedResult = [['G','D','A'],
+                    ['H','E','B'],
+                    ['I','F','C']];
+    let actualResult = arrayAndStringMethods.rotateMatrix(test);
+    assert.deepEqual(actualResult, expectedResult);
+  });
+  it('returns the same array for a matrix of size 1', function(){
+    let result = arrayAndStringMethods.rotateMatrix([["A"]])
+    assert.deepEqual(result,[["A"]])
+  });
+  it('fails on numbers', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.rotateMatrix(0);
+    });
+  });
+
+  it('fails on booleans', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.rotateMatirx(true);
+    });
+  });
+
+  it('fails on strings', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.rotateMatrix("");
+    });
+  });
+  it('fails on matrices where the size is not MXN', function() {
+      const test = [['A','B','C'],
+                    ['D','E','F','G'],
+                    ['G','H','I']];
+      assert.throws(function() {
+        arrayAndStringMethods.rotateMatrix(test)
+      });
+  });
+  it('fails on empty arrays', function() {
+    assert.throws(function() {
+      arrayAndStringMethods.rotateMatrix([[]]);
+    });
+  });
+});
