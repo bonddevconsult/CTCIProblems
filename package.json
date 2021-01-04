@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/AbondDev/CTCIProblems#readme",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
   "engines": {
     "node": "14.x",
     "npm": "6.x"

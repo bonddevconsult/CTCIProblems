@@ -1,4 +1,5 @@
 const arrayAndStringMethods = require('../solutions/ArraysAndStrings')
+const linkedLists = require('../solutions/LinkedLists')
 const assert = require('assert');
 
 describe('isUnique function', function() {

@@ -28,3 +28,7 @@ Temporary Items
 
 #node modules
 node_modules
+
+#Files not ready
+/solutions/LinkedLists.js
+/DataStructures/CsharpImp.cs
