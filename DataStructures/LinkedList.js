@@ -12,6 +12,11 @@ class LinkedList {
     newElement.next = this.header
     this.header = newElement
   }
+  remove(){
+    if(this.header) {
+      this.header = this.header.next
+    }
+  }
 }
 
 module.exports = LinkedList
