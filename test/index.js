@@ -1,15 +1,17 @@
 const arrayAndStringMethods = require('../solutions/ArraysAndStrings')
-const linkedLists = require('../solutions/LinkedLists')
+// const linkedLists = require('../solutions/LinkedLists')
 const assert = require('assert');
 
 describe('isUnique function', function() {
 
   it('returns false when all characters are not unique', function() {
-    let result = arrayAndStringMethods.isUnique("abc");
-    assert.equal(result, false);
+    let result1 = arrayAndStringMethods.isUnique("aba");
+    let result2 = arrayAndStringMethods.isUnique("abcdaef");
+    assert.equal(result1, false);
+    assert.equal(result2, false);
   });
   it('returns true when all characters are unique', function() {
-    let result = arrayAndStringMethods.isUnique("aaa");
+    let result = arrayAndStringMethods.isUnique("abc");
     assert.equal(result, true);
   });
   it('returns true on single character strings', function() {

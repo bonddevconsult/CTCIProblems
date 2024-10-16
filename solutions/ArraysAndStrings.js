@@ -7,9 +7,8 @@ const ArrayAndStringMethods = {
   isUnique(someText) {
     if (typeof someText !== "string") throw new TypeError(`This function only accepts strings as parameters Your type is ${typeof someText}`);
     if (someText.length === 1) return true
-    for (let i = 1; i < someText.length; i++) {
-      if (someText[i] !== someText[i - 1]) return false
-    }
+    characterCatalog = this.catalogCharacterInstances(someText)
+    if (Object.values(characterCatalog).some(characterCount => characterCount > 1 )) return false
     return true;
   },
   /**
